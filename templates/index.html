@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Task Master</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+
+<h1>🤖 AI Task Master</h1>
+<p>Explainable AI Task Planning</p>
+
+<div class="container">
+
+    <form method="POST" class="card">
+        <h2>Add Task</h2>
+        <input name="name" placeholder="Task name" required>
+        <input type="date" name="deadline" required>
+        <select name="priority">
+            <option>Low</option>
+            <option>Medium</option>
+            <option>High</option>
+        </select>
+        <button>Add</button>
+    </form>
+
+    <div class="card">
+        <h2>Tasks</h2>
+        {% for t in tasks %}
+            <div class="task">
+                <strong>{{ t.name }}</strong><br>
+                {{ t.priority }} | {{ t.status }}
+
+                {% if t.status == "Pending" %}
+                    <br>
+                    <a href="/done/{{ t.id }}">Mark Done</a>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+
+</div>
+
+</body>
+</html>
