@@ -3,7 +3,11 @@ import sqlite3
 import uuid
 import datetime
 
-app = Flask(__name__)
+app = Flask(
+    __name__,
+    template_folder="templates",
+    static_folder="static"
+)
 
 # ---------- DATABASE ----------
 def get_db():
